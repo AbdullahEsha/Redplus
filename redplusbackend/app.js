@@ -9,7 +9,7 @@ app.get("/", function (req, res) {
 
 //=========== mongoDB connection && connection port ================//
 const dbUri =
-  "mongodb+srv://shahariaresha:<password>@cluster0.vwysm.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb+srv://shahariaresha:<password></password>@cluster0.vwysm.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose
   .connect(dbUri)
