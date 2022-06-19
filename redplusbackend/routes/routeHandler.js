@@ -11,8 +11,8 @@ const userController = require("../controller/User");
 
 //===================== Ambulance Start ============================//
 
-router.post("/ambulance/get/all", ambulanceController.getAmbulanceData);
+router.get("/ambulance/get/all", ambulanceController.getAmbulanceData);
 
-//===================== Ambulance End ============================//
+//===================== Ambulance End =============================//
 
 module.exports = router;
