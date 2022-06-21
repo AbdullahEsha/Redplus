@@ -8,7 +8,7 @@ const bioSchema = new Schema(
       type: String,
     },
     img: {
-      type: File,
+      type: String,
     },
     bloodGroup: {
       type: String,
