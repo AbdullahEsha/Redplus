@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const SupportSchema = new Schema(
   {
     details: {
-      type: Text,
+      type: String,
     },
     user_id: {
       type: mongoose.Schema.Types.ObjectId,

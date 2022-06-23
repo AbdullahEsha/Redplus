@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const BlogSchema = new Schema(
+const SpecialistSchema = new Schema(
   {
     pic: {
       type: String,
@@ -15,5 +15,5 @@ const BlogSchema = new Schema(
   { timestamps: true }
 );
 
-const Blog = mongoose.model("Blog", BlogSchema);
-module.exports = Blog;
+const Specialist = mongoose.model("Specialist", SpecialistSchema);
+module.exports = Specialist;
