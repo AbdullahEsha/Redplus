@@ -9,3 +9,16 @@ module.exports.getSpecialistData = (req, res) => {
       res.status(422).json({ error: err });
     });
 };
+module.exports.storeSpecialistData = async (req, res) => {
+  const { pic, blog } = req.body;
+  const specialistData = new Specialist({
+    pic,
+    blog,
+  });
+  specialistData
+    .save()
+    .then((specialist) => {
+      res.status(200).json({ specialist: "Successfully Added " + specialist });
+    })
+    .catch((err) => console.log(err));
+};

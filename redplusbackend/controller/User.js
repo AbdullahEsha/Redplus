@@ -9,3 +9,19 @@ module.exports.getUserData = (req, res) => {
       res.status(422).json({ error: err });
     });
 };
+module.exports.storeUserData = async (req, res) => {
+  const { name, email, password, phoneNumber, userType } = req.body;
+  const userData = new User({
+    name,
+    email,
+    password,
+    phoneNumber,
+    userType,
+  });
+  userData
+    .save()
+    .then((user) => {
+      res.status(200).json({ user: "Successfully Added " + user });
+    })
+    .catch((err) => console.log(err));
+};
