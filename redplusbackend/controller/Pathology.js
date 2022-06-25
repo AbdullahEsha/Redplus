@@ -19,8 +19,8 @@ module.exports.storePathologyData = async (req, res) => {
   });
   pathologyData
     .save()
-    .then((pathology) => {
-      res.status(200).json({ pathology: "Successfully Added " + pathology });
+    .then((response) => {
+      res.status(200).json({ response: response });
     })
     .catch((err) => console.log(err));
 };

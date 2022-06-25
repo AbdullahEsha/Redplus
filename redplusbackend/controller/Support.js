@@ -10,14 +10,15 @@ module.exports.getSupportData = (req, res) => {
     });
 };
 module.exports.storeSupportData = async (req, res) => {
-  const { details } = req.body;
+  const { details, user_id } = req.body;
   const supportData = new Support({
     details,
+    user_id,
   });
   supportData
     .save()
-    .then((support) => {
-      res.status(200).json({ support: "Successfully Added " + support });
+    .then((response) => {
+      res.status(200).json({ response: response });
     })
     .catch((err) => console.log(err));
 };

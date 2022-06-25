@@ -1,6 +1,6 @@
 const Auth = require("../models/Auth");
 
-module.exports.getAuthData = (req, res) => {
+module.exports.verify = (req, res) => {
   Auth.find()
     .then((auth) => {
       res.status(200).json({ auth: auth });

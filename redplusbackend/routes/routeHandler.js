@@ -5,7 +5,7 @@ const ambulanceController = require("../controller/Ambulance");
 const authController = require("../controller/Auth");
 const bioController = require("../controller/Bio");
 const pathologyController = require("../controller/Pathology");
-const specialistController = require("../controller/Specialist");
+const specialistController = require("../controller/Pathologist");
 const supportController = require("../controller/Support");
 const userController = require("../controller/User");
 
@@ -17,7 +17,7 @@ router.post("/ambulance/store/all", ambulanceController.storeAmbulanceData);
 //router.get("/auth/get/all", authController.getAuthData);
 
 router.get("/bio/get/all", bioController.getBioData);
-router.post("/bio/store/all", bioController.storeBioData);
+router.post("/bio/store/:id", bioController.storeBioData);
 
 router.get("/pathology/get/all", pathologyController.getPathologyData);
 router.post("/pathology/store/all", pathologyController.storePathologyData);

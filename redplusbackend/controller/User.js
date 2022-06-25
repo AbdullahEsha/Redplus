@@ -1,3 +1,4 @@
+const { model } = require("mongoose");
 const User = require("../models/User");
 
 module.exports.getUserData = (req, res) => {
@@ -9,10 +10,10 @@ module.exports.getUserData = (req, res) => {
       res.status(422).json({ error: err });
     });
 };
+
 module.exports.storeUserData = async (req, res) => {
-  const { name, email, password, phoneNumber, userType } = req.body;
+  const { email, password, phoneNumber, userType } = req.body;
   const userData = new User({
-    name,
     email,
     password,
     phoneNumber,
@@ -20,8 +21,14 @@ module.exports.storeUserData = async (req, res) => {
   });
   userData
     .save()
-    .then((user) => {
-      res.status(200).json({ user: "Successfully Added " + user });
+    .then((response) => {
+      res.status(200).json({ response: response });
     })
     .catch((err) => console.log(err));
+};
+
+model.exports.getUserId = async (email, res) => {
+  User.findOne({ email: email })
+    .then((data) => res.status(200).json({ userData: data }))
+    .catch((err) => res.status(422).json({ error: err }));
 };
