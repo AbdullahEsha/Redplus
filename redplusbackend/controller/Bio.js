@@ -27,3 +27,38 @@ module.exports.storeBioData = async (req, res, user_id) => {
     })
     .catch((err) => console.log(err));
 };
+module.exports.destroyBioData = (req, res) => {
+  const { id } = req.params;
+  Bio.findByIdAndDelete({ _id: id })
+    .then(() => res.status(200).json({ msg: "Deleted Succesfully" }))
+    .catch((error) => res.status(422).json({ error: error }));
+};
+module.exports.getEditBioData = async (req, res) => {
+  const { user_id } = req.params;
+  try {
+    const bio = await Bio.findOne({ user_id: user_id });
+    res.status(200).json({ bio: bio });
+  } catch (error) {
+    res.status(400).json({ error: "error" });
+  }
+};
+module.exports.postEditBioData = (req, res) => {
+  const { user_id } = req.params;
+  Bio.findOneAndUpdate(
+    { user_id: user_id },
+    {
+      $set: {
+        name: req.body.name,
+        img: req.body.img,
+        bloodGroup: req.body.bloodGroup,
+      },
+    },
+    { new: true },
+    (err, response) => {
+      if (err) {
+        res.status(422).json({ error: err });
+      }
+      res.status(200).json({ response: response });
+    }
+  ).catch((err) => console.log("err", err));
+};
